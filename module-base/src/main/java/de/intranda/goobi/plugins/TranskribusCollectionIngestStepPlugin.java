@@ -36,36 +36,39 @@ import net.xeoh.plugins.base.annotations.PluginImplementation;
 
 @PluginImplementation
 @Log4j2
-public class TranskribusCollectionStepPlugin implements IStepPluginVersion2 {
-    
+public class TranskribusCollectionIngestStepPlugin implements IStepPluginVersion2 {
+
     @Getter
-    private String title = "intranda_step_transkribus_collection";
+    private String title = "intranda_step_transkribus_collection_ingest";
     @Getter
     private Step step;
-    @Getter
-    private String value;
-    @Getter 
-    private boolean allowTaskFinishButtons;
+    private String transkribusLogin;
+    private String transkribusPassword;
+    private String transkribusApiUrl;
+    private String transkribusCollection;
+    private String viewerBaseUrl;
+    private String identifierField;
     private String returnPath;
 
     @Override
     public void initialize(Step step, String returnPath) {
         this.returnPath = returnPath;
         this.step = step;
-                
+
         // read parameters from correct block in configuration file
         SubnodeConfiguration myconfig = ConfigPlugins.getProjectAndStepConfig(title, step);
-        value = myconfig.getString("value", "default value"); 
-        allowTaskFinishButtons = myconfig.getBoolean("allowTaskFinishButtons", false);
+        transkribusLogin = myconfig.getString("transkribusLogin");
+        transkribusPassword = myconfig.getString("transkribusPassword");
+        transkribusApiUrl = myconfig.getString("transkribusApiUrl");
+        transkribusCollection = myconfig.getString("transkribusCollection");
+        viewerBaseUrl = myconfig.getString("viewerBaseUrl");
+        identifierField = myconfig.getString("identifierField");
         log.info("TranskribusCollection step plugin initialized");
     }
 
     @Override
     public PluginGuiType getPluginGuiType() {
-        return PluginGuiType.FULL;
-        // return PluginGuiType.PART;
-        // return PluginGuiType.PART_AND_FULL;
-        // return PluginGuiType.NONE;
+        return PluginGuiType.NONE;
     }
 
     @Override
@@ -87,7 +90,7 @@ public class TranskribusCollectionStepPlugin implements IStepPluginVersion2 {
     public String finish() {
         return "/uii" + returnPath;
     }
-    
+
     @Override
     public int getInterfaceVersion() {
         return 0;
@@ -97,7 +100,7 @@ public class TranskribusCollectionStepPlugin implements IStepPluginVersion2 {
     public HashMap<String, StepReturnValue> validate() {
         return null;
     }
-    
+
     @Override
     public boolean execute() {
         PluginReturnValue ret = run();
@@ -108,7 +111,14 @@ public class TranskribusCollectionStepPlugin implements IStepPluginVersion2 {
     public PluginReturnValue run() {
         boolean successful = true;
         // your logic goes here
-        
+
+        System.out.println("login: " + transkribusLogin);
+        System.out.println("transkribusPassword: " + transkribusPassword);
+        System.out.println("transkribusApiUrl: " + transkribusApiUrl);
+        System.out.println("transkribusCollection: " + transkribusCollection);
+        System.out.println("viewerBaseUrl: " + viewerBaseUrl);
+        System.out.println("identifierField: " + identifierField);
+
         log.info("TranskribusCollection step plugin executed");
         if (!successful) {
             return PluginReturnValue.ERROR;

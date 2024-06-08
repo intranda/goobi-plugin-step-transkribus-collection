@@ -6,7 +6,6 @@
 			<arg value="package"/>
 		</exec>
 		<copy file="module-main/target/plugin_intranda_step_transkribus_collection.jar" todir="/opt/digiverso/goobi/plugins/step/" overwrite="true"/>
-		<copy file="module-gui/target/plugin_intranda_step_transkribus_collection-GUI.jar" todir="/opt/digiverso/goobi/plugins/GUI/" overwrite="true"/>
 	</target>
 
 </project>

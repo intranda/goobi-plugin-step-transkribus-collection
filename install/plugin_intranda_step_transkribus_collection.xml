@@ -12,10 +12,24 @@
         <project>*</project>
         <step>*</step>
         
-        <!-- sample parameter -->
-        <value>test</value>
-        <!-- display button to finish the task directly from within the entered plugin -->
-        <allowTaskFinishButtons>true</allowTaskFinishButtons>
+        <!-- Login name for Transkribus user -->
+        <transkribusLogin>User</transkribusLogin>
+        
+        <!-- Password for Transkribus user -->
+        <transkribusPassword>Password</transkribusPassword>
+        
+        <!-- URL for the Transkribus API to use -->
+        <transkribusApiUrl>test</transkribusApiUrl>
+        
+        <!-- Name of the Collection where the documents shall be added to -->
+        <transkribusCollection>test</transkribusCollection>
+       
+        <!-- Base URL of the viewer where the public available METS files are located -->
+        <viewerBaseUrl>test</viewerBaseUrl>
+
+        <!-- Identifier to use for the viewer Base URL -->
+        <identifierField>$(meta.CatalogIDDigital)</identifierField>
+        
     </config>
 
 </config_plugin>
