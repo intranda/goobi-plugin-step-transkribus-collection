@@ -24,11 +24,10 @@
         <!-- Name of the Collection where the documents shall be added to -->
         <transkribusCollection>test</transkribusCollection>
        
-        <!-- Base URL of the viewer where the public available METS files are located -->
-        <viewerBaseUrl>test</viewerBaseUrl>
-
-        <!-- Identifier to use for the viewer Base URL -->
-        <identifierField>$(meta.CatalogIDDigital)</identifierField>
+        <!-- URL where the public available METS files can be downloaded -->
+        <!-- Use the complete URL here with VariableReplacer expressions like this: -->
+        <!-- https://viewer.goobi.io/viewer/sourcefile?id=$(meta.CatalogIDDigital) -->
+        <metsUrl>https://dibiki.ub.uni-kiel.de/viewer/sourcefile?id=$(meta.CatalogIDDigital)</metsUrl>
         
     </config>
 

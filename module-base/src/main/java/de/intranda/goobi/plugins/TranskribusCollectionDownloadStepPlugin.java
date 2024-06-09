@@ -46,8 +46,7 @@ public class TranskribusCollectionDownloadStepPlugin implements IStepPluginVersi
     private String transkribusPassword;
     private String transkribusApiUrl;
     private String transkribusCollection;
-    private String viewerBaseUrl;
-    private String identifierField;
+    private String metsUrl;
     private String returnPath;
 
     @Override
@@ -56,13 +55,12 @@ public class TranskribusCollectionDownloadStepPlugin implements IStepPluginVersi
         this.step = step;
 
         // read parameters from correct block in configuration file
-        SubnodeConfiguration myconfig = ConfigPlugins.getProjectAndStepConfig(title, step);
+        SubnodeConfiguration myconfig = ConfigPlugins.getProjectAndStepConfig("intranda_step_transkribus_collection", step);
         transkribusLogin = myconfig.getString("transkribusLogin");
         transkribusPassword = myconfig.getString("transkribusPassword");
         transkribusApiUrl = myconfig.getString("transkribusApiUrl");
         transkribusCollection = myconfig.getString("transkribusCollection");
-        viewerBaseUrl = myconfig.getString("viewerBaseUrl");
-        identifierField = myconfig.getString("identifierField");
+        metsUrl = myconfig.getString("metsUrl");
         log.info("TranskribusCollection step plugin initialized");
     }
 
@@ -116,8 +114,7 @@ public class TranskribusCollectionDownloadStepPlugin implements IStepPluginVersi
         System.out.println("transkribusPassword: " + transkribusPassword);
         System.out.println("transkribusApiUrl: " + transkribusApiUrl);
         System.out.println("transkribusCollection: " + transkribusCollection);
-        System.out.println("viewerBaseUrl: " + viewerBaseUrl);
-        System.out.println("identifierField: " + identifierField);
+        System.out.println("metsUrl: " + metsUrl);
 
         log.info("TranskribusCollection step plugin executed");
         if (!successful) {

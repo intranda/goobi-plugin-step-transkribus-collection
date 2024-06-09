@@ -71,13 +71,13 @@ public class TranskribusCollectionPluginTest {
 
     @Test
     public void testConstructor() throws Exception {
-        TranskribusCollectionStepPlugin plugin = new TranskribusCollectionStepPlugin();
+        TranskribusCollectionIngestStepPlugin plugin = new TranskribusCollectionIngestStepPlugin();
         assertNotNull(plugin);
     }
 
     @Test
     public void testInit() {
-        TranskribusCollectionStepPlugin plugin = new TranskribusCollectionStepPlugin();
+        TranskribusCollectionIngestStepPlugin plugin = new TranskribusCollectionIngestStepPlugin();
         plugin.initialize(step, "something");
         assertEquals(step.getTitel(), plugin.getStep().getTitel());
     }
