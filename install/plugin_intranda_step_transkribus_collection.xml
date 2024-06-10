@@ -13,16 +13,16 @@
         <step>*</step>
         
         <!-- Login name for Transkribus user -->
-        <transkribusLogin>User</transkribusLogin>
+        <transkribusLogin>user</transkribusLogin>
         
         <!-- Password for Transkribus user -->
-        <transkribusPassword>Password</transkribusPassword>
+        <transkribusPassword>password</transkribusPassword>
         
         <!-- URL for the Transkribus API to use -->
-        <transkribusApiUrl>test</transkribusApiUrl>
+        <transkribusApiUrl>https://transkribus.eu/TrpServer/rest/</transkribusApiUrl>
         
         <!-- Name of the Collection where the documents shall be added to -->
-        <transkribusCollection>test</transkribusCollection>
+        <transkribusCollection>280768</transkribusCollection>
        
         <!-- URL where the public available METS files can be downloaded -->
         <!-- Use the complete URL here with VariableReplacer expressions like this: -->
