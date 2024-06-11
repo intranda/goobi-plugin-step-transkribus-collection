@@ -63,6 +63,7 @@ public class TranskribusCollectionIngestStepPlugin implements IStepPluginVersion
     private String transkribusCollection;
     private String metsUrl;
     private String returnPath;
+    private long ingestDelay;
 
     @Override
     public void initialize(Step step, String returnPath) {
@@ -76,7 +77,8 @@ public class TranskribusCollectionIngestStepPlugin implements IStepPluginVersion
         transkribusApiUrl = myconfig.getString("transkribusApiUrl");
         transkribusCollection = myconfig.getString("transkribusCollection");
         metsUrl = myconfig.getString("metsUrl");
-        log.info("TranskribusCollection step plugin initialized");
+        ingestDelay = myconfig.getLong("ingestDelay", 3000);
+        log.info("TranskribusCollectionIngest step plugin initialized");
     }
 
     @Override
@@ -142,11 +144,11 @@ public class TranskribusCollectionIngestStepPlugin implements IStepPluginVersion
             String sessionId = TranskribusHelper.getSessionId(transkribusApiUrl, transkribusLogin, transkribusPassword);
 
             // Ingest METS file to Trandskribus and retrieve a Document ID back
-            String documentId = TranskribusHelper.ingestMetsFile(sessionId, transkribusApiUrl, replacedMetsUrl, transkribusCollection);
+            String documentId = TranskribusHelper.ingestMetsFile(sessionId, transkribusApiUrl, replacedMetsUrl, transkribusCollection, ingestDelay);
 
             // Store Document ID as Process Property
             Processproperty pp = new Processproperty();
-            pp.setTitel("Transkribus Document ID");
+            pp.setTitel(TranskribusHelper.DOCUMENT_ID_PROPERTY);
             pp.setWert(documentId);
             pp.setProzess(step.getProzess());
             PropertyManager.saveProcessProperty(pp);
@@ -155,7 +157,7 @@ public class TranskribusCollectionIngestStepPlugin implements IStepPluginVersion
             Helper.addMessageToProcessJournal(step.getProcessId(), LogType.INFO,
                     "Ingest into Transkribus collection " + transkribusCollection + " successfull as document with ID " + documentId);
 
-            log.info("TranskribusCollection step plugin executed");
+            log.info("TranskribusCollectionIngest step plugin executed");
             return PluginReturnValue.FINISH;
         } catch (ReadException | IOException | SwapException | PreferencesException | URISyntaxException | JDOMException | InterruptedException e) {
             log.error("TranskribusCollection - Error while creating the ingest", e);

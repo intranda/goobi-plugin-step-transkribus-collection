@@ -35,6 +35,8 @@ public class TranskribusJob {
     public String jobData;
     @JsonProperty("resumable")
     public Boolean resumable;
+    @JsonProperty("result")
+    public String result;
     @JsonProperty("jobImpl")
     public String jobImpl;
     @JsonProperty("moduleUrl")
@@ -49,6 +51,8 @@ public class TranskribusJob {
     public String ended;
     @JsonProperty("created")
     public String created;
+    @JsonProperty("pid")
+    public String pid;
     @JsonProperty("batchId")
     public Integer batchId;
     @JsonProperty("pageid")

@@ -21,6 +21,8 @@ import kong.unirest.core.Unirest;
 
 public class TranskribusHelper {
 
+    public static final String DOCUMENT_ID_PROPERTY = "Transkribus Document ID";
+
     /**
      * Check if the URL works
      * 
@@ -88,7 +90,7 @@ public class TranskribusHelper {
      * @throws ClientProtocolException
      * @throws IOException
      */
-    public static String ingestMetsFile(String sessionId, String transkribusUrl, String metsUrl, String collectionId)
+    public static String ingestMetsFile(String sessionId, String transkribusUrl, String metsUrl, String collectionId, long delay)
             throws JsonMappingException, JsonProcessingException, InterruptedException {
         HttpResponse<String> response = Unirest.post(
                 transkribusUrl + "collections/" + collectionId + "/createDocFromMetsUrl?fileName=" + metsUrl)
@@ -98,7 +100,7 @@ public class TranskribusHelper {
                 .asString();
         String jobID = response.getBody();
 
-        Thread.sleep(3000);
+        Thread.sleep(delay);
         HttpResponse<String> response2 = Unirest.get(transkribusUrl + "jobs/" + jobID)
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .header("Cookie", "JSESSIONID=" + sessionId)
@@ -107,6 +109,41 @@ public class TranskribusHelper {
         ObjectMapper om = new ObjectMapper();
         TranskribusJob tj = om.readValue(response2.getBody(), TranskribusJob.class);
         return String.valueOf(tj.getDocId());
+    }
+
+    /**
+     * trigger the export of the given document as alto files
+     *
+     * @param documentId
+     * @param sessionId
+     * @param transkribusUrl
+     * @param collectionId
+     * @param delay
+     * @return
+     * @throws InterruptedException
+     * @throws JsonMappingException
+     * @throws JsonProcessingException
+     */
+    public static String startExport(String documentId, String sessionId, String transkribusUrl, String collectionId, long delay)
+            throws InterruptedException, JsonMappingException, JsonProcessingException {
+        HttpResponse<String> response = Unirest.post(transkribusUrl + "collections/" + collectionId + "/export")
+                .header("Content-Type", "application/json")
+                .header("Cookie", "JSESSIONID=" + sessionId)
+                .body("{\"commonPars\" : {\"doExportDocMetadata\" : true,\"doWriteMets\" : true,\"doWriteImages\" : true,\"doExportPageXml\" : true,\"doExportAltoXml\" : true,\"doExportSingleTxtFiles\" : false,\"doWritePdf\" : false,\"doWriteTei\" : false,\"doWriteDocx\" : false,\"doWriteOneTxt\" : false,\"useVersionStatus\" : \"Latest version\",\"writeTextOnWordLevel\" : false,\"splitIntoWordsInAltoXml\" : true},\"docs\" : {\"doc\" : [ {\"docId\" : "
+                        + documentId + ",\"pageList\" : {\"pages\" : [ ]}}]}}")
+                .asString();
+        String jobID = response.getBody();
+
+        Thread.sleep(delay);
+        HttpResponse<String> response2 = Unirest.get(transkribusUrl + "jobs/" + jobID)
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .header("Cookie", "JSESSIONID=" + sessionId)
+                .asString();
+
+        ObjectMapper om = new ObjectMapper();
+        TranskribusJob tj = om.readValue(response2.getBody(), TranskribusJob.class);
+        return String.valueOf(tj.getResult());
+
     }
 
 }

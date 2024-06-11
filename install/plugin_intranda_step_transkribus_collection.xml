@@ -29,6 +29,12 @@
         <!-- https://viewer.goobi.io/viewer/sourcefile?id=$(meta.CatalogIDDigital) -->
         <metsUrl>https://dibiki.ub.uni-kiel.de/viewer/sourcefile?id=$(meta.CatalogIDDigital)</metsUrl>
         
+		<!-- define a delay between the ingest trigger and the finishing of the ingest in Transkribus -->
+        <ingestDelay>5000</ingestDelay>
+
+		<!-- define a delay between the export trigger and the actual download of the exported results -->
+        <downloadDelay>10000</downloadDelay>
+        
     </config>
 
 </config_plugin>
