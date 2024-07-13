@@ -1,7 +1,6 @@
 ---
 title: Einspielen und Download aus Transkribus Collections
 identifier: plugin-step-transkribus-collection
-github: https://github.com/intranda/plugin-step-transkribus-collection
 description: Step Plugin für Goobi workflow zum Einspielen von Bildern und den Download von annotierten Ergebnissen aus Transkribus Collections
 published: true
 ---
