@@ -13,7 +13,7 @@ Die vorliegende Dokumentation beschreibt die Installation, Konfiguration und den
 Um das Plugin nutzen zu können, müssen folgende Dateien installiert werden:
 
 ```bash
-/opt/digiverso/goobi/plugins/GUI//opt/digiverso/goobi/plugins/step/plugin-step-transkribus-collection.jar
+/opt/digiverso/goobi/plugins/step/plugin-step-transkribus-collection.jar
 /opt/digiverso/goobi/config/plugin_intranda_step_transkribus_collection.xml
 ```
 
