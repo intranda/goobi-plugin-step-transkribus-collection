@@ -1,7 +1,6 @@
 ---
 title: Einspielen und Download aus Transkribus Collections
 identifier: plugin-step-transkribus-collection
-github: https://github.com/intranda/plugin-step-transkribus-collection
 description: Step Plugin für Goobi workflow zum Einspielen von Bildern und den Download von annotierten Ergebnissen aus Transkribus Collections
 published: true
 ---
@@ -13,7 +12,7 @@ Die vorliegende Dokumentation beschreibt die Installation, Konfiguration und den
 Um das Plugin nutzen zu können, müssen folgende Dateien installiert werden:
 
 ```bash
-/opt/digiverso/goobi/plugins/GUI//opt/digiverso/goobi/plugins/step/plugin-step-transkribus-collection.jar
+/opt/digiverso/goobi/plugins/step/plugin-step-transkribus-collection.jar
 /opt/digiverso/goobi/config/plugin_intranda_step_transkribus_collection.xml
 ```
 

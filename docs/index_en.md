@@ -1,7 +1,6 @@
 ---
 title: Import and download from Transkribus Collections
 identifier: plugin-step-transkribus-collection
-github: https://github.com/intranda/plugin-step-transkribus-collection
 description: Step plugin for Goobi workflow for importing images and downloading annotated results from Transkribus Collections
 published: true
 ---
@@ -13,7 +12,7 @@ This documentation describes the installation, configuration and use of the Step
 In order to use the plugin, the following files must be installed:
 
 ```bash
-/opt/digiverso/goobi/plugins/GUI//opt/digiverso/goobi/plugins/step/plugin-step-transkribus-collection.jar
+/opt/digiverso/goobi/plugins/step/plugin-step-transkribus-collection.jar
 /opt/digiverso/goobi/config/plugin_intranda_step_transkribus_collection.xml
 ```
 
