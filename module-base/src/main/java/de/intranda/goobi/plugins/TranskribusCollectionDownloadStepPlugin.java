@@ -37,7 +37,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipFile;
 import org.apache.commons.configuration.SubnodeConfiguration;
 import org.apache.commons.io.FileUtils;
-import org.goobi.beans.Processproperty;
+import org.goobi.beans.GoobiProperty;
 import org.goobi.beans.Step;
 import org.goobi.production.enums.LogType;
 import org.goobi.production.enums.PluginGuiType;
@@ -132,7 +132,7 @@ public class TranskribusCollectionDownloadStepPlugin implements IStepPluginVersi
 
             // find the correct property with the transkribus document id
             String documentId = null;
-            for (Processproperty pp : step.getProzess().getEigenschaften()) {
+            for (GoobiProperty pp : step.getProzess().getEigenschaften()) {
                 if (TranskribusHelper.DOCUMENT_ID_PROPERTY.equals(pp.getTitel())) {
                     documentId = pp.getWert();
                     break;
