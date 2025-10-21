@@ -3,6 +3,10 @@ title: Import and download from Transkribus Collections
 identifier: plugin-step-transkribus-collection
 description: Step plugin for Goobi workflow for importing images and downloading annotated results from Transkribus Collections
 published: true
+keywords:
+    - Goobi workflow
+    - Plugin
+    - Step Plugin
 ---
 
 ## Introduction
