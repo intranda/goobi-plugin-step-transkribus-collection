@@ -30,7 +30,7 @@ Für das Einspielen der Bilder in eine Transkribus-Collection muss das Werk übe
 
 Wenn das Werk innerhalb von Transkribus wie gewünscht bearbeitet wurde, kann dieses mit dem Plugin `intranda_step_transkribus_collection_download` wieder heruntergeladen werden.
 
-![Konfiguration des Arbeitsschritts für den Download der ALTO-Datien aus einer Transkribus Collection](screen3_de.png)
+![Konfiguration des Arbeitsschritts für den Download der ALTO-Dateien aus einer Transkribus Collection](screen3_de.png)
 
 
 ## Überblick und Funktionsweise
